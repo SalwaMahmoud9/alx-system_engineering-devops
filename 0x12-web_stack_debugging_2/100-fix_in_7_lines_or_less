@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# nginx as su instead of root
+# nginx
 pkill "apache2"
 sudo sed -i 's/#user www-data/nginx/g' /etc/user nginx/nginx.conf
 sudo sed -i 's/\<80\>/&80/' /etc/nginx/sites-available/default
