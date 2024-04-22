@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""REST API """
+"""export to json"""
 
 import json
 import requests
@@ -10,12 +10,10 @@ if __name__ == '__main__':
     employeeId = sys.argv[1]
     url = "https://jsonplaceholder.typicode.com/users/" + str(employeeId)
 
-    response = requests.get(url)
-    username = response.json().get('username')
+    username = requests.get(url).json().get('username')
 
     url += "/todos"
-    response = requests.get(url)
-    tasks = response.json()
+    tasks = requests.get(url).json()
 
     dic = {str(employeeId): []}
     for t in tasks:
