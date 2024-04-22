@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Accessing a REST API for todo lists of employees"""
+"""dictionary of list of dictionaries"""
 
 import json
 import requests
@@ -9,17 +9,14 @@ import sys
 if __name__ == '__main__':
     url = "https://jsonplaceholder.typicode.com/users"
 
-    response = requests.get(url)
-    users = response.json()
+    users = requests.get(url).json()
 
     dic = {}
     for u in users:
         userId = u.get('id')
         username = u.get('username')
-        url2 = 'https://jsonplaceholder.typicode.com/users/{}'.format(userId)
-        url2 += '/todos/'
-        response = requests.get(url2)
-        tasks = response.json()
+        url2 = 'https://jsonplaceholder.typicode.com/users/{}/todos/'.format(userId)
+        tasks = requests.get(url2).json()
         dic[userId] = []
         for t in tasks:
             dic[userId].append({
