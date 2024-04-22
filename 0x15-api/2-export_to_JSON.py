@@ -8,8 +8,7 @@ import sys
 
 if __name__ == '__main__':
     employeeId = sys.argv[1]
-    url = "https://jsonplaceholder.typicode.com/users"
-    url += "/" + str(employeeId)
+    url = "https://jsonplaceholder.typicode.com/users/" + str(employeeId)
 
     response = requests.get(url)
     username = response.json().get('username')
