@@ -15,8 +15,8 @@ if __name__ == '__main__':
     for u in users:
         userId = u.get('id')
         username = u.get('username')
-        url2 = 'https://jsonplaceholder.typicode.com/users/{}/todos/'.format(userId)
-        tasks = requests.get(url2).json()
+        url2 = 'https://jsonplaceholder.typicode.com/users/{}'.format(userId)
+        tasks = requests.get(url2+'/todos/').json()
         dic[userId] = []
         for t in tasks:
             dic[userId].append({
