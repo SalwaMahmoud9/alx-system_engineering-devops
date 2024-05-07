@@ -3,7 +3,12 @@ import requests
 
 
 def top_ten(subreddit):
-    """top_ten"""
+    """ queries Reddit API and prints the titles of
+    first 10 hot posts listed for a given subreddit.
+
+    If not a valid subreddit, print None.
+    Ensure that you are not following redirects.
+    """
     url_base = 'http://www.reddit.com/r/'
     url_query = '{:s}/hot.json?limit={:d}'.format(subreddit, 10)
     headers = {'user-agent': 'egsyquest'}
