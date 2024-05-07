@@ -1,21 +1,17 @@
 #!/usr/bin/python3
-"""
-0-subs
-"""
+"""0-subs"""
 
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """
-       number_of_subscribers
-    """
-    req = requests.get(
+    """number of subscribers"""
+    r = requests.get(
         "https://www.reddit.com/r/{}/about.json".format(subreddit),
         headers={"User-Agent": "Custom"},
     )
 
-    if req.status_code == 200:
-        return req.json().get("data").get("subscribers")
-    else:
+    if r.status_code != 200:
         return 0
+    else:
+        return r.json().get("data").get("subscribers")
