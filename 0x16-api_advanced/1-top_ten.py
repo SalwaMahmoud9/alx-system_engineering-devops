@@ -2,6 +2,7 @@
 """ Script to get the first 10 hot
     posts on Reddit
 """
+
 from requests import get
 
 
