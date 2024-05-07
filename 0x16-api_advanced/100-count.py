@@ -32,14 +32,14 @@ def count_words(subreddit, word_list, word_count=[], page_after=None):
                 count_words(subreddit, word_list,
                             word_count, request.json()['data']['after'])
             else:
-                dicto = {}
+                dic = {}
                 for key_word in list(set(word_list)):
                     i = word_list.index(key_word)
                     if word_count[i] != 0:
-                        dicto[word_list[i]] = (word_count[i] *
+                        dic[word_list[i]] = (word_count[i] *
                                                word_list.count(word_list[i]))
 
-                for key, value in sorted(dicto.items(),
+                for key, value in sorted(dic.items(),
                                          key=lambda x: (-x[1], x[0])):
                     print('{}: {}'.format(key, value))
     else:
