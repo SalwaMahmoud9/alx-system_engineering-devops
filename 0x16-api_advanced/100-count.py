@@ -21,25 +21,25 @@ def count_words(subreddit, word_list, word_count=[], page_after=None):
 
         if request.status_code == 200:
             for child in request.json()['data']['children']:
-                i = 0
-                for i in range(len(word_list)):
+                index = 0
+                for index in range(len(word_list)):
                     for word in [w for w in child['data']['title'].split()]:
                         word = word.lower()
-                        if word_list[i] == word:
-                            word_count[i] += 1
-                    i += 1
+                        if word_list[index] == word:
+                            word_count[index] += 1
+                    index += 1
             if request.json()['data']['after'] is not None:
                 count_words(subreddit, word_list,
                             word_count, request.json()['data']['after'])
             else:
-                dic = {}
+                dicto = {}
                 for key_word in list(set(word_list)):
-                    i = word_list.index(key_word)
-                    if word_count[i] != 0:
-                        dic[word_list[i]] = (word_count[i] *
-                                               word_list.count(word_list[i]))
+                    index = word_list.index(key_word)
+                    if word_count[index] != 0:
+                        dicto[word_list[index]] = (word_count[index] *
+                                               word_list.count(word_list[index]))
 
-                for key, value in sorted(dic.items(),
+                for key, value in sorted(dicto.items(),
                                          key=lambda x: (-x[1], x[0])):
                     print('{}: {}'.format(key, value))
     else:
@@ -47,13 +47,13 @@ def count_words(subreddit, word_list, word_count=[], page_after=None):
         request = get(url, headers=headers, allow_redirects=False)
         if request.status_code == 200:
             for child in request.json()['data']['children']:
-                i = 0
-                for i in range(len(word_list)):
+                index = 0
+                for index in range(len(word_list)):
                     for word in [w for w in child['data']['title'].split()]:
                         word = word.lower()
-                        if word_list[i] == word:
-                            word_count[i] += 1
-                    i += 1
+                        if word_list[index] == word:
+                            word_count[index] += 1
+                    index += 1
 
             if request.json()['data']['after'] is not None:
                 count_words(subreddit, word_list,
