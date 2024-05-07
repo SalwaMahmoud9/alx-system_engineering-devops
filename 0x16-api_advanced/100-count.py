@@ -1,9 +1,10 @@
 #!/usr/bin/python3
+"""100-count"""
 from requests import get
 
 
 def count_words(subreddit, word_list, word_count=[], page_after=None):
-    """count_words"""
+    """count words"""
     headers = {'User-Agent': 'HolbertonSchool'}
 
     word_list = [word.lower() for word in word_list]
