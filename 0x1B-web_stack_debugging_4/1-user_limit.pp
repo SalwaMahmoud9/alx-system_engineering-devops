@@ -1,4 +1,4 @@
-# fixes increase limit
+# 1-user_limit
 exec { 'sed -i "s/holberton hard nofile 5/holberton hard nofile 5000/" /etc/security/limits.conf':
   path => '/usr/bin:/usr/sbin:/bin',
 }
